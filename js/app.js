@@ -278,6 +278,8 @@ $(document).ready(function() {
         let limit = $('#limit').val();
         const format = $('#outputFormat').val();
         const search = $('#search').val().trim(); // Read the search field
+        const searchVerb = $('#searchVerb').val().trim(); // Read the search field
+
 
         if (limit > 1000) {
             limit = 1000;
@@ -299,6 +301,10 @@ $(document).ready(function() {
 
             if (search) {
                 query['activity'] = search; // Replace wildcard with regex equivalent
+            }
+            
+            if (searchVerb) {
+                query['verb'] = searchVerb; // Replace wildcard with regex equivalent
             }
 
             const statements = await fetchStatements(config, query);
